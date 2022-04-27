@@ -1,0 +1,7 @@
+1. execute a client 
+
+$ python 1_keygen.py   # generate two files (alice.pub, alice.pem)
+
+$ python 2_sign.py  # sign a message and generate a signature
+
+$ python 23_verify.py # verify the message by the signature (given)

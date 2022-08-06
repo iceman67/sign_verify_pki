@@ -1,6 +1,11 @@
 ## C++
 0. prerequisite 
-- install crypto++ package
+- install crypto++ package as follows:
+git clone https://github.com/weidai11/cryptopp.git
+cd cryptopp
+make
+make install
+
 
 1. make clean && make
 2.  ./sign_verify

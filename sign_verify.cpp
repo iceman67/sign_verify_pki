@@ -45,24 +45,13 @@ using CryptoPP::Base64URLEncoder;
 #include <cryptopp/queue.h>
 using CryptoPP::ByteQueue;
 
-#include <cryptopp/hex.h>
-using CryptoPP::HexEncoder;
-
 
 typedef uint8_t byte;
 
 void SaveKey(const RSA::PublicKey& PublicKey, const string& filename);
 void SaveKey(const RSA::PrivateKey& PrivateKey, const string& filename);
 
-/*
-void SaveHex(const string& filename, const BufferedTransformation& bt)
-{
-    HexEncoder encoder;
-    bt.CopyTo(encoder);
-    encoder.MessageEnd();
-    Save(filename, encoder);
-}
-*/
+#define TEST 0
 
 int main(int argc, char* argv[])
 {
@@ -78,6 +67,7 @@ int main(int argc, char* argv[])
         RSA::PrivateKey privateKey(parameters);
         RSA::PublicKey publicKey(parameters); 
 
+#if TEST
         ////////////////////////////////////////////////
         // Handle keys
         const Integer& e = publicKey.GetPublicExponent();
@@ -90,6 +80,8 @@ int main(int argc, char* argv[])
 	publicKey.Save(ss);
 
 	cout << "publicKey(string) : " << spki << endl;
+
+#endif 
 
 #if TEST	
         ////////////////////////////////////////////////
@@ -135,9 +127,10 @@ int main(int argc, char* argv[])
 
         ////////////////////////////////////////////////
         // Verify and Recover
-        RSASS<PSSR, SHA1>::Verifier verifier(publicKey);
 #if TEST
         RSASS<PSSR, SHA1>::Verifier verifier(loadkey);
+#else
+        RSASS<PSSR, SHA1>::Verifier verifier(publicKey);
 #endif 
 
         StringSource(signature, true,

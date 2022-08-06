@@ -1,3 +1,16 @@
+## C++
+0. prerequisite 
+- install crypto++ package
+
+1. make clean && make
+2.  ./sign_verify
+
+- if you need to debug some feature in this code, you should set TEST to 1 in the source code (replace 0 to 1)
+#define TEST 0 
+
+
+
+## Python 
 0. prerequisite
 $ pip install cryptography
 $ pip install pyopenssl

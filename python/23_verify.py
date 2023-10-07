@@ -13,8 +13,8 @@ signature = via_pyopenssl_sign256(id, message.decode('utf-8'), digest="sha256")
 print (signature)
 
 #3. Verify a message with a signature
-message = b"XXXX"
-#message = b"asdf"
+#message = b"XXXX"
+message = b"asdf"
 #message = base64.b64encode(message)
 status = via_pyopenssl_verify(id, signature, message.decode('utf-8'), digest="sha256")
 print ("verifying status = {}".format(status))

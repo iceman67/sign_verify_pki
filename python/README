@@ -1,0 +1,10 @@
+1. generate PKI key
+
+   > python 1_keygen.py
+
+2. sign a message using a private key (one of PKI key)
+
+   > python 2_sign.py
+
+3. sign a message and verify it using PKI key
+   > python 23_verify.py
